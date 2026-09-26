@@ -68,7 +68,7 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.1/ref/settings/#databases
 
-DATABASE = {
+DATABASES = {
     'default': {
         'ENGINE': os.environ['BD_ENGINE'],
         'HOST': os.environ['BD_HOST'],
