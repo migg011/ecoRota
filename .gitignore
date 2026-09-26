@@ -18,3 +18,30 @@ local_settings.py
 __pycache__/
 *.pyc
 
+# Python / Django
+env/
+*.sqlite3
+staticfiles/
+media/
+
+#  Variáveis de ambiente
+.env
+.env.local
+.env.*.local
+backend/.env
+
+#  Node / Angular
+node_modules/
+frontend/node_modules/
+dist/
+.angular/
+frontend/.angular/cache/
+
+# IDE / Editor
+.vscode/
+*.swp
+.DS_Store
+
+# ==== Build / Cache ====
+npm-debug.log*
+coverage/
