@@ -1,29 +1,14 @@
+from django.contrib.auth.models import AbstractUser
 from django.db import models
 
-class Usuario(models.Model):
-    username = models.CharField(
-        db_column='tx_username',
-        max_length=100,
-        blank=False,
-        null=False,
-        unique=True,
-        verbose_name='Username'
-    )
-
+class Usuario(AbstractUser):
     email = models.EmailField(
         db_column='tx_email',
         max_length=100,
         blank=False,
         null=False,
-        verbose_name='Email'
-    )
-
-    senha = models.CharField(
-        db_column='tx_senha',
-        max_length=1000,
-        blank=False,
-        null=False,
         unique=True,
+        verbose_name='Email'
     )
 
     nome_completo = models.CharField(
@@ -31,22 +16,8 @@ class Usuario(models.Model):
         max_length=1000,
         blank=False,
         null=False,
-        unique=True,
+        unique=False,
         verbose_name='Nome Completo'
-    )
-
-    ta_ativo = models.BooleanField(
-        db_column='fl_ta_ativo',
-        default=False,
-        verbose_name='Ativo'
-    )
-
-    data_entrada = models.DateTimeField(
-        db_column='dt_data_login',
-        blank=False,
-        null=False,
-        unique=True,
-        verbose_name='Data de entrada'
     )
 
     class Meta:

@@ -1,3 +1,4 @@
+from django.contrib.auth.password_validation import validate_password
 from rest_framework import serializers
 from .models import Usuario, Descarte, Destino
 
@@ -15,3 +16,19 @@ class DestinoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Destino
         fields = '__all__'
+
+class UsuarioRegistroSerializer(serializers.ModelSerializer):
+    password = serializers.CharField(write_only=True, validators=[validate_password])
+
+    class Meta:
+        model = Usuario
+        fields = 'username', 'email', 'nome_completo', 'password'
+
+    def create(self, validated_data):
+        usuario = Usuario.objects.create_user(**validated_data)
+        return usuario
+
+class LoginSerializer(serializers.Serializer):
+    username = serializers.CharField()
+    password = serializers.CharField(write_only=True)
+
