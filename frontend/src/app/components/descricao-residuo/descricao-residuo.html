@@ -1,0 +1,40 @@
+<div class="descricao-container">
+
+  <div class="descricao-card">
+
+    <h1>Descreva seu resíduo</h1>
+
+    <p class="subtitle">
+      Conte para o EcoRota qual resíduo você deseja descartar.
+    </p>
+
+    <form (ngSubmit)="analisarResiduo()">
+
+      <label for="descricao">
+        Descrição do resíduo
+      </label>
+
+      <textarea
+        id="descricao"
+        name="descricao"
+        [(ngModel)]="descricao"
+        placeholder="Exemplo: Tenho uma televisão quebrada e gostaria de saber onde posso descartá-la."
+        rows="8"
+      ></textarea>
+
+      <button
+        type="submit"
+        [disabled]="descricao.trim() === ''"
+      >
+        Analisar resíduo
+      </button>
+
+    </form>
+
+    <a routerLink="/login" class="voltar">
+      Voltar para o login
+    </a>
+
+  </div>
+
+</div>

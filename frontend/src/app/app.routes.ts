@@ -3,6 +3,9 @@ import { Routes } from '@angular/router';
 import { Home } from './components/home/home';
 import { Login } from './components/login/login';
 import { Cadastro } from './components/cadastro/cadastro';
+import { DescricaoResiduo } from './components/descricao-residuo/descricao-residuo';
+import { Processamento } from './components/processamento/processamento';
+import { Resultado } from './components/resultado/resultado';
 
 export const routes: Routes = [
   {
@@ -21,5 +24,17 @@ export const routes: Routes = [
   {
     path: 'home',
     component: Home
+  },
+  {
+    path: 'descricao',
+    component: DescricaoResiduo
+  },
+  {
+    path: 'processamento',
+    component: Processamento
+  },
+  {
+    path: 'resultado',
+    component: Resultado
   }
 ];

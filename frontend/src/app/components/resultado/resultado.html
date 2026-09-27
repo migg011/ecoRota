@@ -1,0 +1,56 @@
+<div class="resultado-container">
+
+  <div class="resultado-card">
+
+    <h1>Resultado da análise</h1>
+
+    <p class="descricao">
+      <strong>Descrição informada:</strong><br>
+      {{ descricao }}
+    </p>
+
+    <div class="classificacao">
+
+      <h2>Classificação</h2>
+
+      <p>{{ categoria }}</p>
+
+    </div>
+
+    <div class="destinos">
+
+      <h2>Locais para descarte</h2>
+
+      @for (ecoponto of ecopontos; track ecoponto.id) {
+
+        <div class="ecoponto">
+
+          <h3>{{ ecoponto.nome }}</h3>
+
+          <p>
+            <strong>Endereço:</strong>
+            {{ ecoponto.endereco }}
+          </p>
+
+          <p>
+            <strong>Horário:</strong>
+            {{ ecoponto.horario }}
+          </p>
+
+          <button>
+            Escolher este ecoponto
+          </button>
+
+        </div>
+
+      }
+
+    </div>
+
+    <a routerLink="/descricao" class="voltar">
+      Fazer nova análise
+    </a>
+
+  </div>
+
+</div>

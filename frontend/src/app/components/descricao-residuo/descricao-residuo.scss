@@ -1,0 +1,82 @@
+.descricao-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f4f6f8;
+  padding: 20px;
+}
+
+.descricao-card {
+  width: 100%;
+  max-width: 600px;
+  padding: 32px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.descricao-card h1 {
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.subtitle {
+  margin-bottom: 30px;
+  text-align: center;
+  color: #666;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+textarea {
+  width: 100%;
+  box-sizing: border-box;
+  resize: vertical;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+  font-family: inherit;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: #555;
+}
+
+button {
+  margin-top: 20px;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.mensagem-sucesso {
+  margin-top: 20px;
+  padding: 12px;
+  text-align: center;
+  border-radius: 6px;
+  background: #e8f5e9;
+}
+
+.voltar {
+  display: block;
+  margin-top: 20px;
+  text-align: center;
+}
