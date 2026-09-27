@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-descricao-residuo',
@@ -11,15 +11,19 @@ import { RouterLink } from '@angular/router';
 export class DescricaoResiduo {
 
   descricao = '';
-  enviado = false;
+
+  constructor(private router: Router) {}
 
   analisarResiduo(): void {
+
     if (this.descricao.trim() === '') {
       return;
     }
 
-    this.enviado = true;
-
-    console.log('Descrição enviada:', this.descricao);
+    this.router.navigate(['/processamento'], {
+      queryParams: {
+        descricao: this.descricao.trim()
+      }
+    });
   }
 }

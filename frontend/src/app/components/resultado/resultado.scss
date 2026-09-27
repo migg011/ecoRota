@@ -1,0 +1,67 @@
+.resultado-container {
+  min-height: 100vh;
+  padding: 40px 20px;
+  background: #f4f6f8;
+}
+
+.resultado-card {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 32px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.resultado-card h1 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.descricao {
+  padding: 15px;
+  background: #f5f5f5;
+  border-radius: 8px;
+}
+
+.classificacao {
+  margin-top: 25px;
+  padding: 20px;
+  border-radius: 8px;
+  background: #eef7ee;
+}
+
+.classificacao h2,
+.destinos h2 {
+  margin-top: 0;
+}
+
+.destinos {
+  margin-top: 30px;
+}
+
+.ecoponto {
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.ecoponto h3 {
+  margin-top: 0;
+}
+
+.ecoponto button {
+  margin-top: 10px;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.voltar {
+  display: block;
+  margin-top: 25px;
+  text-align: center;
+}
