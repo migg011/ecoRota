@@ -8,9 +8,16 @@ class UsuarioSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class DescarteSerializer(serializers.ModelSerializer):
+    descricao_texto = serializers.CharField(
+        source="input_do_usuario",
+        max_length=1000,
+        min_length=3,
+    )
+
     class Meta:
         model = Descarte
-        fields = '__all__'
+        fields = ["id", "Usuario", "Destino", "data_criacao", "peso_estimado_kg", "categoria", "descricao_texto"]
+        read_only_fields = ["id", "categoria"]
 
 class DestinoSerializer(serializers.ModelSerializer):
     class Meta:

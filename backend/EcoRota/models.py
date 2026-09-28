@@ -1,5 +1,6 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from django.core.validators import MinValueValidator
 
 class Usuario(AbstractUser):
     email = models.EmailField(
@@ -85,18 +86,18 @@ class Descarte(models.Model):
 
     data_criacao = models.DateTimeField(
         db_column='dt_data_criacao',
-        blank=False,
-        null=False,
-        unique=True,
+        auto_now_add=True,
         verbose_name='Data de criacao'
     )
 
-    peso_estimado_kg = models.FloatField(
+    peso_estimado_kg = models.DecimalField(
         db_column='vl_peso_estimado_kg',
+        max_digits=8,
+        decimal_places=2,
+        validators=[MinValueValidator(0)],
         blank=False,
         null=False,
-        unique=True,
-        verbose_name='Peso Estimado'
+        verbose_name='Peso Estimado',
     )
 
     categoria = models.CharField(
@@ -112,7 +113,6 @@ class Descarte(models.Model):
         max_length=1000,
         blank=False,
         null=False,
-        unique=True,
         verbose_name='Input do Usuario'
     )
 
