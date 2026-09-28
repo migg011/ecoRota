@@ -1,0 +1,68 @@
+<div class="confirmacao-container">
+
+  <div class="confirmacao-card">
+
+    <h1>Confirmar destinação</h1>
+
+    <p class="descricao">
+      Você escolheu o seguinte local para realizar o descarte:
+    </p>
+
+    <div class="ecoponto">
+
+      <h2>{{ ecoponto.nome }}</h2>
+
+      <p>
+        <strong>Endereço:</strong>
+        {{ ecoponto.endereco }}
+      </p>
+
+      <p>
+        <strong>Horário:</strong>
+        {{ ecoponto.horario }}
+      </p>
+
+    </div>
+
+    <div class="orientacoes">
+
+      <h2>Orientações</h2>
+
+      <ul>
+        <li>Transporte o material de forma adequada.</li>
+        <li>Evite misturar resíduos diferentes.</li>
+        <li>Entregue o material diretamente no local indicado.</li>
+      </ul>
+
+    </div>
+
+    <label class="confirmacao-checkbox">
+
+      <input
+        type="checkbox"
+        [(ngModel)]="confirmou"
+      >
+
+      Confirmo minha intenção de realizar o descarte neste local.
+
+    </label>
+
+    <button
+      type="button"
+      [disabled]="!confirmou"
+      (click)="confirmarDescarte()"
+    >
+      Confirmar destinação
+    </button>
+
+    <button
+      type="button"
+      class="voltar"
+      (click)="voltarParaResultado()"
+    >
+      Voltar
+    </button>
+
+  </div>
+
+</div>

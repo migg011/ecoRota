@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-resultado',
@@ -28,7 +28,26 @@ export class Resultado implements OnInit {
     }
   ];
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
+
+  escolherEcoponto(ecoponto: {
+    id: number;
+    nome: string;
+    endereco: string;
+    horario: string;
+  }): void {
+
+    this.router.navigate(['/confirmar-descarte'], {
+      queryParams: {
+        nome: ecoponto.nome,
+        endereco: ecoponto.endereco,
+        horario: ecoponto.horario
+      }
+    });
+  }
 
   ngOnInit(): void {
     this.descricao =

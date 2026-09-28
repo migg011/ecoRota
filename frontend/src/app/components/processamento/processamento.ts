@@ -25,6 +25,6 @@ export class Processamento implements OnInit {
           descricao: this.descricao
         }
       });
-    }, 2000);
+    }, 5000);
   }
 }
