@@ -7,6 +7,7 @@ import { DescricaoResiduo } from './components/descricao-residuo/descricao-resid
 import { Processamento } from './components/processamento/processamento';
 import { Resultado } from './components/resultado/resultado';
 import { ConfirmarDescarte } from './components/confirmar-descarte/confirmar-descarte';
+import { Dashboard } from './components/dashboard/dashboard';
 
 export const routes: Routes = [
   {
@@ -41,5 +42,9 @@ export const routes: Routes = [
   {
     path: 'confirmar-descarte',
     component: ConfirmarDescarte
+  },
+  {
+    path: 'dashboard',
+    component: Dashboard
   }
 ];

@@ -1,0 +1,86 @@
+<div class="dashboard-container">
+
+  <div class="dashboard-header">
+
+    <div>
+      <h1>Meu EcoRota</h1>
+
+      <p>
+        Confira seus registros de destinação.
+      </p>
+    </div>
+
+    <a routerLink="/descricao">
+      Nova análise
+    </a>
+
+  </div>
+
+  <section class="resumo">
+
+    <div class="resumo-card">
+      <span>Total de registros</span>
+      <strong>{{ registros.length }}</strong>
+    </div>
+
+    <div class="resumo-card">
+      <span>Destinações confirmadas</span>
+      <strong>{{ registros.length }}</strong>
+    </div>
+
+  </section>
+
+  <section class="registros">
+
+    <h2>Meus registros</h2>
+
+    @if (registros.length === 0) {
+
+      <div class="sem-registros">
+        <p>Você ainda não possui registros.</p>
+
+        <a routerLink="/descricao">
+          Fazer minha primeira análise
+        </a>
+      </div>
+
+    } @else {
+
+      @for (registro of registros; track registro.id) {
+
+        <div class="registro-card">
+
+          <div class="registro-topo">
+
+            <h3>{{ registro.residuo }}</h3>
+
+            <span class="status">
+              {{ registro.status }}
+            </span>
+
+          </div>
+
+          <p>
+            <strong>Categoria:</strong>
+            {{ registro.categoria }}
+          </p>
+
+          <p>
+            <strong>Ecoponto:</strong>
+            {{ registro.ecoponto }}
+          </p>
+
+          <p>
+            <strong>Data:</strong>
+            {{ registro.data }}
+          </p>
+
+        </div>
+
+      }
+
+    }
+
+  </section>
+
+</div>
