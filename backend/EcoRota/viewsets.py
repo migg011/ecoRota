@@ -3,6 +3,7 @@ from rest_framework import viewsets
 from .models import Usuario, Destino, Descarte
 from .serializers import UsuarioSerializer, DestinoSerializer, DescarteSerializer
 from .filters import DestinoFilter, DescarteFilter, UsuarioFilter
+from .services.classificador_ia import classificar_residuo
 
 
 class UsuarioViewSet(viewsets.ModelViewSet):
@@ -23,3 +24,7 @@ class DescarteViewSet(viewsets.ModelViewSet):
     filterset_class = DescarteFilter
     ordering_fields = ('usuario__id','destino__id', 'categoria')
 
+    def perform_create(self, serializer):
+        descricao = serializer.validated_data.get('descricao_texto', '')
+        categoria_identificada = classificar_residuo(descricao)
+        serializer.save(categoria=categoria_identificada)
