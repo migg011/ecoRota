@@ -22,13 +22,16 @@ class UsuarioRegistroSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Usuario
-        fields = 'username', 'email', 'nome_completo', 'password'
+        fields = 'nome_completo', 'email', 'password'
 
     def create(self, validated_data):
+        validated_data['email'] = validated_data['email'].lower()
+        validated_data['username'] = validated_data['email']
         usuario = Usuario.objects.create_user(**validated_data)
+
         return usuario
 
 class LoginSerializer(serializers.Serializer):
-    username = serializers.CharField()
+    email = serializers.EmailField()
     password = serializers.CharField(write_only=True)
 
