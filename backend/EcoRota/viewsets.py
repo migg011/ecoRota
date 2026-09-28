@@ -25,6 +25,6 @@ class DescarteViewSet(viewsets.ModelViewSet):
     ordering_fields = ('usuario__id','destino__id', 'categoria')
 
     def perform_create(self, serializer):
-        descricao = serializer.validated_data.get('descricao_texto', '')
+        descricao = serializer.validated_data['input_do_usuario']
         categoria_identificada = classificar_residuo(descricao)
         serializer.save(categoria=categoria_identificada)
