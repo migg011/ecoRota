@@ -60,3 +60,106 @@ def classificar_por_llm(texto: str) -> list[str] | None:
     except GroqError:
         logger.exception("Falha na chamada: API da Groq")
         return None
+
+
+def classificar_por_palavras_chave(texto: str) -> str:
+    texto_lower = texto.lower()
+
+    mots_madeira = [
+        "madeira",
+        "tabua",
+        "tábua",
+        "palete",
+        "pallet",
+        "compensado",
+        "ripa"
+    ]
+
+    mots_organico = [
+        "folha",
+        "galho",
+        "poda",
+        "tronco",
+        "grama",
+        "arvore",
+        "árvore",
+        "vegetação",
+        "cinza",
+        "queimada",
+    ]
+
+    mots_construcao = [
+        "tijolo",
+        "gesso",
+        "entulho",
+        "concreto",
+        "cimento",
+        "piso",
+        "azulejo",
+        "pedra",
+        "areia",
+        "brita",
+    ]
+
+    mots_reciclaveis = [
+        "plastico",
+        "plástico",
+        "garrafa",
+        "papel",
+        "papelao",
+        "papelão",
+        "caixa",
+        "lata",
+        "metal",
+        "vidro"
+    ]
+
+    mots_eletronicos = [
+        "computador",
+        "tv",
+        "televisao",
+        "televisão",
+        "fio",
+        "cabo",
+        "bateria",
+        "pilha",
+        "celular",
+        "eletro"]
+
+    mots_moveis = [
+        "sofa",
+        "sofá",
+        "colchão",
+        "colchao",
+        "armario",
+        "armário",
+        "mesa",
+        "cadeira",
+        "estante"
+    ]
+
+    if any(p in texto_lower for p in mots_madeira):
+        return "Madeira"
+    if any(p in texto_lower for p in mots_organico):
+        return "Orgânico de Estiagem"
+    if any(p in texto_lower for p in mots_construcao):
+        return "Construção"
+    if any(p in texto_lower for p in mots_reciclaveis):
+        return "Secos e Recicláveis"
+    if any(p in texto_lower for p in mots_eletronicos):
+        return "Eletroeletrônicos e Pilhas"
+    if any(p in texto_lower for p in mots_moveis):
+        return "Móveis e Volumosos"
+
+    #padrao
+    return "Construção"
+
+
+def classificar_residuo(texto: str) -> str:
+    categoria = classificar_por_llm(texto)
+
+    if categoria is not None:
+        return categoria
+
+    logger.info(f"Executando fallback local por palavras-chave para o texto: '{texto}'")
+    return classificar_por_palavras_chave(texto)
