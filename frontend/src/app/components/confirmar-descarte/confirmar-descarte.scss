@@ -1,0 +1,81 @@
+.confirmacao-container {
+  min-height: 100vh;
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f4f6f8;
+}
+
+.confirmacao-card {
+  width: 100%;
+  max-width: 650px;
+  padding: 32px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.confirmacao-card h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.descricao {
+  color: #666;
+  text-align: center;
+}
+
+.ecoponto {
+  margin-top: 25px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.ecoponto h2 {
+  margin-top: 0;
+}
+
+.orientacoes {
+  margin-top: 25px;
+  padding: 20px;
+  background: #f5f5f5;
+  border-radius: 8px;
+}
+
+.orientacoes h2 {
+  margin-top: 0;
+}
+
+.confirmacao-checkbox {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  margin-top: 25px;
+  line-height: 1.4;
+}
+
+.confirmacao-checkbox input {
+  margin-top: 4px;
+}
+
+button {
+  width: 100%;
+  margin-top: 20px;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.voltar {
+  background: transparent;
+  border: 1px solid #ccc;
+}

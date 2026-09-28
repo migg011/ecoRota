@@ -37,7 +37,10 @@
             {{ ecoponto.horario }}
           </p>
 
-          <button>
+          <button
+            type="button"
+            (click)="escolherEcoponto(ecoponto)"
+          >
             Escolher este ecoponto
           </button>
 
