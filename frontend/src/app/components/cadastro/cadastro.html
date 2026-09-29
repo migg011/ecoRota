@@ -8,14 +8,17 @@
       Cadastre-se no EcoRota
     </p>
 
-    <form>
+    <form (ngSubmit)="onSubmit()">
 
       <div class="field">
         <label for="name">Nome</label>
         <input
           id="name"
+          name="name"
           type="text"
           placeholder="Digite seu nome"
+          [(ngModel)]="userData.nome_completo"
+          required
         >
       </div>
 
@@ -23,8 +26,11 @@
         <label for="email">E-mail</label>
         <input
           id="email"
+          name="email"
           type="email"
           placeholder="Digite seu e-mail"
+          [(ngModel)]="userData.email"
+          required
         >
       </div>
 
@@ -32,13 +38,20 @@
         <label for="password">Senha</label>
         <input
           id="password"
+          name="password"
           type="password"
           placeholder="Digite sua senha"
+          [(ngModel)]="userData.password"
+          required
         >
       </div>
 
-      <button type="submit">
-        Criar conta
+      <p *ngIf="errorMessage" class="error-message" style="color: #d9534f; font-size: 0.875rem; margin-top: 8px;">
+        {{ errorMessage }}
+      </p>
+
+      <button type="submit" [disabled]="loading">
+        {{ loading ? 'Criando conta...' : 'Criar conta' }}
       </button>
 
     </form>
