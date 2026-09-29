@@ -1,21 +1,20 @@
 <div class="login-container">
-
   <div class="login-card">
-
     <h1>EcoRota</h1>
-
     <p class="subtitle">
       Destine seus resíduos de forma correta.
     </p>
 
-    <form>
-
+    <form (ngSubmit)="onSubmit()">
       <div class="field">
         <label for="email">E-mail</label>
         <input
           id="email"
+          name="email"
           type="email"
           placeholder="Digite seu e-mail"
+          [(ngModel)]="credentials.email"
+          required
         >
       </div>
 
@@ -23,22 +22,26 @@
         <label for="password">Senha</label>
         <input
           id="password"
+          name="password"
           type="password"
           placeholder="Digite sua senha"
+          [(ngModel)]="credentials.password"
+          required
         >
       </div>
 
-      <button type="submit">
-        Entrar
-      </button>
+      <p *ngIf="errorMessage" class="error-message" style="color: #d9534f; font-size: 0.875rem; margin-top: 8px;">
+        {{ errorMessage }}
+      </p>
 
+      <button type="submit" [disabled]="loading">
+        {{ loading ? 'Entrando...' : 'Entrar' }}
+      </button>
     </form>
 
     <p class="register-text">
       Ainda não possui uma conta?
       <a routerLink="/cadastro">Criar conta</a>
     </p>
-
   </div>
-
 </div>
