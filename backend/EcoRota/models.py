@@ -31,6 +31,14 @@ class Usuario(AbstractUser):
         return self.username
 
 class Destino(models.Model):
+    nome = models.CharField(
+        db_column='tx_nome',
+        max_length=100,
+        blank=False,
+        null=False,
+        verbose_name='Nome'
+    )
+
     categoria = models.CharField(
         db_column='tx_categoria',
         max_length=100,
@@ -51,6 +59,14 @@ class Destino(models.Model):
         blank=False,
         null=False,
         verbose_name='Descricao'
+    )
+
+    horario = models.CharField(
+        db_column='tx_horario',
+        max_length=100,
+        blank=False,
+        null=False,
+        verbose_name='Horario'
     )
 
     class Meta:

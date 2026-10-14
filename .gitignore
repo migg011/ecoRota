@@ -45,3 +45,6 @@ frontend/.angular/cache/
 # ==== Build / Cache ====
 npm-debug.log*
 coverage/
+
+# contexto de IA
+AGENTS.md
