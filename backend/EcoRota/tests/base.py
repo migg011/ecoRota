@@ -17,9 +17,11 @@ class DescarteTestBase(TestCase):
             nome_completo='Ana Souza',
         )
         self.destino = Destino.objects.create(
+            nome='Ecoponto Centro',
             categoria='Ecoponto Centro',
             endereco='Rua das Flores, 100',
             descricao='Coleta seletiva de reciclaveis',
+            horario='Seg a Sex, 8h às 17h',
         )
         self.client = APIClient()
         self.client.force_authenticate(self.usuario)
