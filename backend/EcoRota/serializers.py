@@ -42,3 +42,9 @@ class LoginSerializer(serializers.Serializer):
     email = serializers.EmailField()
     password = serializers.CharField(write_only=True)
 
+class ClassificadorSerializer(serializers.Serializer):
+    descricao_texto = serializers.CharField(
+        max_length=1000,
+        min_length=3,
+    )
+

@@ -2,6 +2,7 @@ from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 
 from .views import (
+    ClassificarView,
     RegisterView,
     LoginView,
 )
@@ -20,6 +21,7 @@ router.register(r'descartes', DescarteViewSet, basename='descarte')
 urlpatterns = [
     path('auth/registro/', RegisterView.as_view(), name='api_registro'),
     path('auth/login/', LoginView.as_view(), name='api_login'),
+    path('classificar/', ClassificarView.as_view(), name='api_classificar'),
 
     path('', include(router.urls)),
 ]

@@ -5,7 +5,14 @@ from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from .serializers import LoginSerializer, UsuarioRegistroSerializer
+from .models import Destino
+from .serializers import (
+    ClassificadorSerializer,
+    DestinoSerializer,
+    LoginSerializer,
+    UsuarioRegistroSerializer,
+)
+from .services.classificador_ia import classificar_residuo
 
 
 class RegisterView(APIView):
@@ -53,6 +60,31 @@ class LoginView(APIView):
                 "token": token.key,
                 "email": usuario.email,
                 "nome_completo": usuario.nome_completo,
+            },
+            status=status.HTTP_200_OK,
+        )
+
+
+class ClassificarView(APIView):
+    serializer_class = ClassificadorSerializer
+
+    def post(self, request):
+        serializer = ClassificadorSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+
+        descricao = serializer.validated_data["descricao_texto"]
+        categoria = classificar_residuo(descricao)
+
+        # a IA pode devolver mais de uma categoria quando o texto mistura materiais
+        if isinstance(categoria, list):
+            categoria = categoria[0]
+
+        destinos = Destino.objects.filter(categoria=categoria)
+
+        return Response(
+            {
+                "categoria": categoria,
+                "destinos": DestinoSerializer(destinos, many=True).data,
             },
             status=status.HTTP_200_OK,
         )
