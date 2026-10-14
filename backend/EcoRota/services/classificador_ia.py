@@ -8,9 +8,9 @@ CATEGORIAS = [
     "Madeira",
     "Orgânico de Estiagem",
     "Construção",
-    "Recicláveis",
-    "Eletrónicos",
-    "Móveis",
+    "Secos e Recicláveis",
+    "Eletroeletrônicos e Pilhas",
+    "Móveis e Volumosos",
 ]
 
 _client = None
