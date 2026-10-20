@@ -76,10 +76,6 @@ class ClassificarView(APIView):
         descricao = serializer.validated_data["descricao_texto"]
         categoria = classificar_residuo(descricao)
 
-        # a IA pode devolver mais de uma categoria quando o texto mistura materiais
-        if isinstance(categoria, list):
-            categoria = categoria[0]
-
         destinos = Destino.objects.filter(categoria=categoria)
 
         return Response(
