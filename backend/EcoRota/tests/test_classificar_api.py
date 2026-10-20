@@ -6,6 +6,8 @@ from rest_framework.test import APIClient
 
 # a view importa a funcao direto, entao o mock tem que ser aplicado no nome dela
 API = 'EcoRota.views.classificar_residuo'
+# pra simular a IA devolvendo varias categorias, o mock entra no servico
+LLM = 'EcoRota.services.classificador_ia.classificar_por_llm'
 
 
 class ClassificarApiTests(DescarteTestBase):
@@ -53,7 +55,7 @@ class ClassificarApiTests(DescarteTestBase):
         self.assertEqual(resposta.status_code, status.HTTP_401_UNAUTHORIZED)
 
     def test_resposta_de_lista_de_categorias_usa_a_primeira(self):
-        with patch(API, return_value=['Madeira', 'Construção']):
+        with patch(LLM, return_value=['Madeira', 'Construção']):
             resposta = self.post_classificar(descricao_texto='tábua com prego')
         self.assertEqual(resposta.status_code, status.HTTP_200_OK)
         self.assertEqual(resposta.data['categoria'], 'Madeira')

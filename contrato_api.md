@@ -199,6 +199,9 @@ GET /api/destinos/?categoria=Eletroeletrônicos%20e%20Pilhas
 
 Sem token: `401`.
 
+> **Permissão de escrita:** criar, editar e apagar ecoponto (POST/PUT/DELETE) é
+> **restrito ao administrador** — usuário comum logado recebe `403`.
+
 ---
 
 ## Descartes

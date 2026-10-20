@@ -1,5 +1,6 @@
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import viewsets
+from rest_framework.permissions import IsAdminUser, IsAuthenticated
 from .models import Usuario, Destino, Descarte
 from .serializers import UsuarioSerializer, DestinoSerializer, DescarteSerializer
 from .filters import DestinoFilter, DescarteFilter, UsuarioFilter
@@ -17,6 +18,11 @@ class DestinoViewSet(viewsets.ModelViewSet):
     serializer_class = DestinoSerializer
     filterset_class = DestinoFilter
     ordering_fields = ('endereco', 'categoria')
+
+    def get_permissions(self):
+        if self.request.method in ('GET', 'HEAD', 'OPTIONS'):
+            return [IsAuthenticated()]
+        return [IsAdminUser()]
 
 class DescarteViewSet(viewsets.ModelViewSet):
     queryset = Descarte.objects.all()

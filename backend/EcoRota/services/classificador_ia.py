@@ -156,10 +156,11 @@ def classificar_por_palavras_chave(texto: str) -> str:
 
 
 def classificar_residuo(texto: str) -> str:
-    categoria = classificar_por_llm(texto)
+    categorias = classificar_por_llm(texto)
 
-    if categoria is not None:
-        return categoria
+    if categorias is not None:
+        # a IA pode devolver varias categorias quando o texto mistura materiais
+        return categorias[0]
 
     logger.info(f"Executando fallback local por palavras-chave para o texto: '{texto}'")
     return classificar_por_palavras_chave(texto)
